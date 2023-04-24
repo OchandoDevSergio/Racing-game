@@ -4,26 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Racing game</title>
 
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
     <div class="page green" id="page1">
-        <div class="button" id="button1"></div>
+        <div class="centrar">
+
+            <div class="button" onclick="Pageselector(2)" id="button1"></div>
+        </div>
     </div>
-    <div class="page blue" id="page2">
-        <div class="button" id="button2"></div>
+    <div style="display: none" class="page blue" id="page2">
+        <div class="centrar">
+
+            <!-- los coches van a estar aqui fijos.... -->
+
+            <div class="button" onclick="Pageselector(3)" id="button2"></div>
+        </div>
     </div>
-    <div class="page orange" id="page3">
-        <div class="button" id="button3"></div>
+    <div style="display: none" class="page orange" id="page3">
+        <div class="centrar">
+
+            <div class="button" onclick="Pageselector(4)" id="button3"></div>
+        </div>
     </div>
-    <div class="page white" id="page4">
-        <div class="button" id="button4"></div>
+    <div style="display: none" class="page white" id="page4">
+        <div class="centrar">
+
+            <div class="button" onclick="Pageselector(1)" id="button4"></div>
+        </div>
     </div>
 
 
-
+    <script src="js/cars.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

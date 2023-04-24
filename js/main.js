@@ -11,20 +11,10 @@ const Pageselector = (numpage) => {//función para mostrar una página concreta 
 
 }
 
-document.getElementById("page3").style.display = "block";
+console.log(car1);
+console.log(car2);
 
-document.getElementById("button1").addEventListener("click", () => {
- Pageselector(2);
-})
+car1.acelerar();
 
-document.getElementById("button2").addEventListener("click", () => {
-    Pageselector(3);
-   })
-
-document.getElementById("button3").addEventListener("click", () => {
-    Pageselector(4);
-   })
-
-document.getElementById("button4").addEventListener("click", () => {
-    Pageselector(1);
-   })   
+console.log(car1);
+console.log(car2);
