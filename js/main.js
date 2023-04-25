@@ -11,10 +11,6 @@ const Pageselector = (numpage) => {//función para mostrar una página concreta 
 
 }
 
-console.log(car1);
-console.log(car2);
-
-car1.acelerar();
-
-console.log(car1);
-console.log(car2);
+const Carshowing = (car) => {
+  console.log(car);
+}
