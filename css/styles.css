@@ -95,3 +95,14 @@ body {
     background-image: url("../img/cars/verdellamas.jpg");
 }
 
+#page3row1 {
+    height: 20vh;
+    width: 100vw;
+
+    flex-direction: row;
+}
+
+#page3spacebetween {
+    height: 20vh;
+    width: 40vw;
+}
