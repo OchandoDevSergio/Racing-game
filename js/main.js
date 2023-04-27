@@ -4,8 +4,6 @@
 let ganador = "";
 let player1;
 let player2;
-let nameCarPlayer1;
-let nameCarPlayer2;
 
 const Pageselector = (numpage) => {//función para mostrar una página concreta y ocultar el resto estando todas en el mismo .html
     let arrPages = ["page1", "page2", "page3", "page4"];
@@ -26,12 +24,10 @@ const selectCar = (car) => {
   //tanto, el primero va al player1
   if(!player1){
     player1 = car;
-    nameCarPlayer1 = car.name;
     return;
   }
 
   player2 = car;
-  nameCarPlayer2 = car.name;
   document.getElementById("car1").onclick = null;
   document.getElementById("car2").onclick = null;
   document.getElementById("car3").onclick = null;
@@ -40,7 +36,6 @@ const selectCar = (car) => {
   //Si llegamos a este punto en el código, hemos escogido ya dos coches..uno
   //para el player1 y otro para el player2 ...
 
-  
   setTimeout(()=>{
 
     console.log(player1, player2);
@@ -74,7 +69,7 @@ const buildRacingView = () => {
 <div id="page3row3">
   <div id="steeringwheel"></div>
 </div></div>`;
-document.getElementById("carpicplayer1").classList.add(nameCarPlayer1);
-document.getElementById("carpicplayer2").classList.add(nameCarPlayer2);
+document.getElementById("carpicplayer1").classList.add(player1.name);
+document.getElementById("carpicplayer2").classList.add(player2.name);
 }
 
