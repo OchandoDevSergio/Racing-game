@@ -152,3 +152,8 @@ body {
     background-repeat:no-repeat;
     background-position: center center;
 }
+
+.grey {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}

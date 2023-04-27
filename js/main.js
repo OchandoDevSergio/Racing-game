@@ -24,10 +24,14 @@ const selectCar = (car) => {
   //tanto, el primero va al player1
   if(!player1){
     player1 = car;
+    document.getElementById(player1.name).onclick = null;
+    document.getElementById(player1.name).classList.add("grey");
     return;
   }
 
   player2 = car;
+  document.getElementById(player2.name).onclick = null;
+  document.getElementById(player2.name).classList.add("grey");
   document.getElementById("car1").onclick = null;
   document.getElementById("car2").onclick = null;
   document.getElementById("car3").onclick = null;
@@ -42,7 +46,7 @@ const selectCar = (car) => {
     Pageselector(3)
 
     buildRacingView();
-  },500);
+  },1500);
 
 
 }
