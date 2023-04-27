@@ -4,6 +4,7 @@
 let ganador = "";
 let player1;
 let player2;
+let selectionscript = document.getElementById("playerselectionscript");
 
 const Pageselector = (numpage) => {//función para mostrar una página concreta y ocultar el resto estando todas en el mismo .html
     let arrPages = ["page1", "page2", "page3", "page4"];
@@ -26,12 +27,14 @@ const selectCar = (car) => {
     player1 = car;
     document.getElementById(player1.name).onclick = null;
     document.getElementById(player1.name).classList.add("grey");
+    selectionscript.innerHTML = `Player1=${player1.name}`
     return;
   }
 
   player2 = car;
   document.getElementById(player2.name).onclick = null;
   document.getElementById(player2.name).classList.add("grey");
+  selectionscript.innerHTML += `Player2=${player2.name}`
   document.getElementById("car1").onclick = null;
   document.getElementById("car2").onclick = null;
   document.getElementById("car3").onclick = null;
@@ -55,7 +58,8 @@ const selectCar = (car) => {
 const buildRacingView = () => {
 
   let page3 = document.getElementById("page3");
-
+//al emplear elementos que aparecerán después de generar la página incluimos todo el html de la page3
+//en el documento js después de haber introducido todo lo que necesitará
   page3.innerHTML = `<div class="centrar">            <div id="page3row1">
   <div class="carpic" id="carpicplayer1"></div>
   <div id="page3space1"></div>
