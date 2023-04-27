@@ -57,9 +57,24 @@ const buildRacingView = () => {
 
   let page3 = document.getElementById("page3");
 
-  page3.innerHTML = `<div class="centrar"><div id="page3row1"><div class="carpic" id="carpicplayer1"></div>
-  <div id="page3spacebetween"></div><div class="carpic" id="carpicplayer2"></div>
+  page3.innerHTML = `<div class="centrar">            <div id="page3row1">
+  <div class="carpic" id="carpicplayer1"></div>
+  <div id="page3space1"></div>
+  <div class="carpic" id="carpicplayer2"></div>
+</div>
+<div id="page3row2">
+  <div class="cardescription" id="cardescription1">color: ${player1.color} <br>
+  estampado: ${player1.estampado} <br> transmisión: ${player1.transmisión} <br>
+   velocidad: ${player1.velocidad} <br>resistencia: ${player1.resistencia} <br></div>
+  <div id="page3space2"></div>
+  <div class="cardescription" id="cardescription2">color: ${player2.color} <br>
+  estampado: ${player2.estampado} <br> transmisión: ${player2.transmisión} <br>
+   velocidad: ${player2.velocidad} <br>resistencia: ${player2.resistencia} <br></div>
+</div>
+<div id="page3row3">
+  <div id="steeringwheel"></div>
 </div></div>`;
 document.getElementById("carpicplayer1").classList.add(nameCarPlayer1);
 document.getElementById("carpicplayer2").classList.add(nameCarPlayer2);
 }
+

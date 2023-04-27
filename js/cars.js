@@ -5,7 +5,7 @@ class Car {
 
     //Las propiedades van a entrar a través del constructor
     constructor(name, color, estampado, transmisión, velocidad, resistencia) {
-        this.name =name;
+        this.name = name;
         this.color = color;
         this.estampado = estampado;
         this.transmisión = transmisión;

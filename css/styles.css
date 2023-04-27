@@ -14,8 +14,8 @@ body {
 
 .centrar {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:flex-start;
+    align-items:flex-start;
     flex-direction: column;
     
     height: 100vh;
@@ -96,13 +96,59 @@ body {
 }
 
 #page3row1 {
-    height: 20vh;
+    height: 21vh;
     width: 100vw;
 
+    /* background-color: blueviolet; */
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
     flex-direction: row;
 }
 
-#page3spacebetween {
+#page3space1 {
     height: 20vh;
     width: 40vw;
+}
+
+#page3row2 {
+    height: 49vh;
+    width: 100vw;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    flex-direction: row;
+}
+
+.cardescription {
+    color:black;
+    border: 0.1em solid black;
+
+    height: 49vh;
+    width: 30vw;
+}
+
+#page3space2 {
+    height: 49vh;
+    width: 40vw;
+}
+
+#page3row3 {
+    height: 30vh;
+    width: 100vw;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#steeringwheel {
+    height: 10vh;
+    width: 10vw;
+
+    background-image: url("../img/volante.png");
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position: center center;
 }
