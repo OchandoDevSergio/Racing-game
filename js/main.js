@@ -54,6 +54,17 @@ const selectCar = (car) => {
 
 }
 
+const race = () => {
+  let randomicer = Math.random() * 10;
+  // console.log("randomicer", randomicer);
+  if (randomicer <= 5) {
+    // console.log("entra1");
+    player1.acelerar(player1);
+  } else if (randomicer > 5) {
+    // console.log("entra2");
+    player2.acelerar(player2);
+  }
+}
 
 const buildRacingView = () => {
 
@@ -67,15 +78,15 @@ const buildRacingView = () => {
 </div>
 <div id="page3row2">
   <div class="cardescription" id="cardescription1">color: ${player1.color} <br>
-  estampado: ${player1.estampado} <br> transmisión: ${player1.transmisión} <br>
+  estampado: ${player1.estampado} <br> metros recorridos: ${player1.metros} <br>
    velocidad: ${player1.velocidad} <br>resistencia: ${player1.resistencia} <br></div>
   <div id="page3space2"></div>
   <div class="cardescription" id="cardescription2">color: ${player2.color} <br>
-  estampado: ${player2.estampado} <br> transmisión: ${player2.transmisión} <br>
+  estampado: ${player2.estampado} <br> metros recorridos: ${player2.metros} <br>
    velocidad: ${player2.velocidad} <br>resistencia: ${player2.resistencia} <br></div>
 </div>
 <div id="page3row3">
-  <div id="steeringwheel"></div>
+  <div id="steeringwheel" onclick="race()"></div>
 </div></div>`;
 document.getElementById("carpicplayer1").classList.add(player1.name);
 document.getElementById("carpicplayer2").classList.add(player2.name);
