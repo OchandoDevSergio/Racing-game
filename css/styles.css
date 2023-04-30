@@ -14,8 +14,8 @@ body {
 
 .centrar {
     display: flex;
-    justify-content:flex-start;
-    align-items:flex-start;
+    justify-content: flex-start;
+    align-items:center;
     flex-direction: column;
     
     height: 100vh;
@@ -41,20 +41,37 @@ body {
     background-color: black;
 }
 
-.green {
-    background-color: green;
+#button1 {
+    height: 15vh;
+    width: 15vw;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-image: url("../img/startflags.jpg");  
+
+    border: 0.1em solid black;
+    border-radius: 5% 5% 5% 5%;
 }
 
-.blue {
-    background-color: blue;
+.startimage {
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-image: url("../img/start.jpg");
 }
 
-.orange {
-    background-color: orange;
+.raceimage {
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-image: url("../img/race.jpg");
 }
 
-.white {
-    background-color: white;
+.goalimage {
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-image: url("../img/goal.jpg");
 }
 
 .character {
@@ -114,6 +131,10 @@ body {
 
 .car4 {
     background-image: url("../img/cars/verdellamas.jpg");
+}
+
+#page1row1 {
+    height: 10vh;
 }
 
 #page3row1 {
