@@ -66,15 +66,15 @@ const selectCar = (car) => {
   //tanto, el primero va al player1
   if(!player1){
     player1 = car;
-    document.getElementById(player1.name).onclick = null;
-    document.getElementById(player1.name).classList.add("grey");
+    document.getElementById(player1.ref).onclick = null;
+    document.getElementById(player1.ref).classList.add("grey");
     selectionscript.innerHTML = `Player1=${player1.name}`
     return;
   }
 
   player2 = car;
-  document.getElementById(player2.name).onclick = null;
-  document.getElementById(player2.name).classList.add("grey");
+  document.getElementById(player2.ref).onclick = null;
+  document.getElementById(player2.ref).classList.add("grey");
   selectionscript.innerHTML += `Player2=${player2.name}`
   document.getElementById("car1").onclick = null;
   document.getElementById("car2").onclick = null;
@@ -145,7 +145,7 @@ const buildRacingView = () => {
 <div id="page3row3">
   <div id="steeringwheel" onclick="race()"></div>
 </div></div>`;
-document.getElementById("carpicplayer1").classList.add(player1.name);
-document.getElementById("carpicplayer2").classList.add(player2.name);
+document.getElementById("carpicplayer1").classList.add(player1.ref);
+document.getElementById("carpicplayer2").classList.add(player2.ref);
 }
 
