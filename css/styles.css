@@ -2,7 +2,6 @@ body {
     margin: 0;
     padding: 0;
 
-    
 }
 
 .page {
@@ -118,19 +117,19 @@ body {
 }
 
 .car1 {
-    background-image: url("../img/cars/grisbonito.jpg");
+    background-image: url("../img/cars/chatarraJoe.jpg");
 }
 
 .car2 {
-    background-image: url("../img/cars/moradollamas.jpg");
+    background-image: url("../img/cars/purpleTruck.jpg");
 }
 
 .car3 {
-    background-image: url("../img/cars/rojo88.jpg");
+    background-image: url("../img/cars/johnyElRojo.jpg");
 }
 
 .car4 {
-    background-image: url("../img/cars/verdellamas.jpg");
+    background-image: url("../img/cars/inferno.jpg");
 }
 
 #page1row1 {

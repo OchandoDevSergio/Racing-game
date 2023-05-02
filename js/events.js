@@ -1,39 +1,39 @@
 
 class Event {
 
-    //Todo lo que se contiene dentro de estas llaves corresponde al plano del coche
+    //Propiedades de los eventos
+    constructor(titulo, texto, distancia) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.distancia = distancia;
+    }
 
-    //Las propiedades van a entrar a través del constructor
-    // constructor(titulo, tipo, texto, maniobra) {
-    //     this.titulo = titulo;
-    //     this.tipo = tipo;
-    //     this.texto = texto;
-    //     this.metros = metros;
-    //     this.velocidad = velocidad;
-    //     this.resistencia = resistencia;
-    //     this.hp = 100;
+    //Métodos de los eventos
 
-    // }
+    sobornar(player){
 
-    //Métodos
 
-    // acelerar(player){
-    //     //   console.log("entra en acelerar", player);
-    //     player.metros = this.metros + this.velocidad;
+    };
 
-    //     document.getElementById("cardescription2").innerHTML= `color: ${player2.color} <br>
-    //     estampado: ${player2.estampado} <br> metros recorridos: ${player2.metros} <br>
-    //      velocidad: ${player2.velocidad} <br>resistencia: ${player2.resistencia} <br>`;
+    recoger(player){
 
-    //      document.getElementById("cardescription1").innerHTML= `color: ${player1.color} <br>
-    //      estampado: ${player1.estampado} <br> metros recorridos: ${player1.metros} <br>
-    //       velocidad: ${player1.velocidad} <br>resistencia: ${player1.resistencia} <br>`;
-    // };
+
+    };
+
+    sortear(player){
+
+
+    };
+
+    boost(player){
+
+
+    };
 
 
 };
 
-// let car1 = new Car("car1", "Gris","Liso",0,35,40);
-// let car2 = new Car("car2", "Morado","Llamas",0,45,30);
-// let car3 = new Car("car3", "Rojo","88",0,40,35);
-// let car4 = new Car("car4", "Verde","Llamas",0,50,25);
+let controlPolicial = new Event("Control Policial", "Soborna a los agentes escribiendo ...", 0);
+let autoestopista = new Event("Autoestopista", "Recoge al autoestopista y recupera vida", 0);
+let obstaculo = new Event("Obstáculo", "Sortea el obstáculo escribiendo ...", 0);
+let combustibleEspecial = new Event("Combustible especial", "Reposta escribiendo ...", 0);

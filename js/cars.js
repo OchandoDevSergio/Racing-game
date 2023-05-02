@@ -4,13 +4,13 @@ class Car {
     //Todo lo que se contiene dentro de estas llaves corresponde al plano del coche
 
     //Las propiedades van a entrar a través del constructor
-    constructor(name, color, estampado, metros, velocidad, resistencia) {
+    constructor(name, color, estampado, metros, velocidad, maniobrabilidad) {
         this.name = name;
         this.color = color;
         this.estampado = estampado;
         this.metros = metros;
         this.velocidad = velocidad;
-        this.resistencia = resistencia;
+        this.maniobrabilidad = maniobrabilidad;
         this.hp = 100;
 
     }
@@ -19,15 +19,15 @@ class Car {
 
     acelerar(player){
         //   console.log("entra en acelerar", player);
-        player.metros = this.metros + this.velocidad;
+        player.metros = this.metros + this.velocidad + (parseInt(Math.random() * 10));
 
         document.getElementById("cardescription2").innerHTML= `color: ${player2.color} <br>
         estampado: ${player2.estampado} <br> metros recorridos: ${player2.metros} <br>
-         velocidad: ${player2.velocidad} <br>resistencia: ${player2.resistencia} <br>`;
+         velocidad: ${player2.velocidad} <br>maniobrabilidad: ${player2.maniobrabilidad} <br>`;
 
          document.getElementById("cardescription1").innerHTML= `color: ${player1.color} <br>
          estampado: ${player1.estampado} <br> metros recorridos: ${player1.metros} <br>
-          velocidad: ${player1.velocidad} <br>resistencia: ${player1.resistencia} <br>`;
+          velocidad: ${player1.velocidad} <br>maniobrabilidad: ${player1.maniobrabilidad} <br>`;
     };
 
 

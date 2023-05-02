@@ -97,11 +97,11 @@ const selectCar = (car) => {
 
 
 
-const checkWinner = (carCheck) => {
+const checkWinner = (player) => {
 
   //comprobarmos si carCheck sus metros recorr son superiores o iguales a 2000... 
-  if (carCheck.metros >= 2000) {
-    ganador = carCheck.name;
+  if (player.metros >= 2000) {
+    ganador = player.name;
     Pageselector(4)
   }
 
@@ -136,11 +136,11 @@ const buildRacingView = () => {
 <div id="page3row2">
   <div class="cardescription" id="cardescription1">color: ${player1.color} <br>
   estampado: ${player1.estampado} <br> metros recorridos: ${player1.metros} <br>
-   velocidad: ${player1.velocidad} <br>resistencia: ${player1.resistencia} <br></div>
+   velocidad: ${player1.velocidad} <br>maniobrabilidad: ${player1.maniobrabilidad} <br></div>
   <div id="page3space2"></div>
   <div class="cardescription" id="cardescription2">color: ${player2.color} <br>
   estampado: ${player2.estampado} <br> metros recorridos: ${player2.metros} <br>
-   velocidad: ${player2.velocidad} <br>resistencia: ${player2.resistencia} <br></div>
+   velocidad: ${player2.velocidad} <br>maniobrabilidad: ${player2.maniobrabilidad} <br></div>
 </div>
 <div id="page3row3">
   <div id="steeringwheel" onclick="race()"></div>
