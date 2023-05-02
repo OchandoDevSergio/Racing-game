@@ -1,4 +1,45 @@
 
+// let player1Combo = "";
+
+// document.addEventListener("keypress", (event) => {
+//   // if(event.key == "y"){
+//   //   console.log("mazo troncoooooooooooo");
+//   // }
+
+//   player1Combo += event.key
+
+//   const contador = setTimeout(()=>{
+
+//     return console.log("perrrrrrrrrrrerete");
+  
+//   },5000);
+  
+
+//   makeCombo(player1Combo, "asd");
+  
+// });
+
+// const makeCombo = (combinacion, combinacionGanadora) => {
+
+//   //compruebas aqui el input del user........ concatenando....
+
+
+
+
+//     //si no has logrado escribir el input..... 
+//     //hacemos un return en el settimeout 
+  
+    
+
+//   if(combinacion === combinacionGanadora){
+//     clearTimeout(contador);
+//     return console.log("lo has hecho bien amic");
+//   }
+
+// }
+
+
+
 //Variables de juego
 
 let ganador = "";
@@ -54,16 +95,32 @@ const selectCar = (car) => {
 
 }
 
+
+
+const checkWinner = (carCheck) => {
+
+  //comprobarmos si carCheck sus metros recorr son superiores o iguales a 2000... 
+  if (carCheck.metros >= 2000) {
+    ganador = carCheck.name;
+    Pageselector(4)
+  }
+
+}
+
 const race = () => {
   let randomicer = Math.random() * 10;
   // console.log("randomicer", randomicer);
   if (randomicer <= 5) {
     // console.log("entra1");
     player1.acelerar(player1);
+    checkWinner(player1)
   } else if (randomicer > 5) {
     // console.log("entra2");
     player2.acelerar(player2);
+    checkWinner(player2)
   }
+
+  
 }
 
 const buildRacingView = () => {
