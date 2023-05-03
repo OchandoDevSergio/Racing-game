@@ -4,7 +4,8 @@ let ganador = "";
 let player1;
 let player2;
 let selectionscript = document.getElementById("playerselectionscript");
-let arrEventos = [1, 0, 0, 0, 0, 0, 0, 0];
+let distanciaEvento = 250;
+// let arrEventos = [1, 0, 0, 0, 0, 0, 0, 0];
 
 const Pageselector = (numpage) => {//función para mostrar una página concreta y ocultar el resto estando todas en el mismo .html
     let arrPages = ["page1", "page2", "page3", "page4"];
@@ -94,16 +95,38 @@ const hpCheck = (player, playerOtro) => {
   }
 };
 
+const randomEvent = (player, playerOtro) =>{
+  let randomNum = Math.random() * 10;
+  if (randomNum > 9) {
+    controlPolicial.sobornar(player, playerOtro);
+  } else if ((randomNum<9)&&(randomNum>7)) {
+    combustibleEspecial.boost(player);
+  } else if ((randomNum<7)&&(randomNum>4)) {
+    autoestopista.recoger(player);
+  } else if (randomNum<4) {
+    obstaculo.sortear(player, playerOtro);
+  }
+}
+
+const checkEvents = (player, playerOtro) => {
+if (player.metros >= distanciaEvento) {
+  distanciaEvento += 250;
+  randomEvent(player, playerOtro);
+}
+}
+
 const race = () => {
   let randomicer = Math.random() * 10;
   // console.log("randomicer", randomicer);
   if (randomicer <= 5) {
     // console.log("entra1");
     player1.acelerar(player1);
+    checkEvents(player1, player2);
     checkWinner(player1);
   } else if (randomicer > 5) {
     // console.log("entra2");
     player2.acelerar(player2);
+    checkEvents(player2, player1);
     checkWinner(player2);
   }
 
@@ -135,22 +158,3 @@ const buildRacingView = () => {
 document.getElementById("carpicplayer1").classList.add(player1.ref);
 document.getElementById("carpicplayer2").classList.add(player2.ref);
 }
-
-//CIRCUITO
-const checkEvents = (player, playerOtro) => {
-if ((player.metros>= 250)&&(arrEventos[0]==1)) {
-  arrEventos[0]=0;
-  arrEventos[1]=1;
-  obstaculo.sortear (player, playerOtro);
-} else if ((player.metros>= 500)&&(arrEventos[1]==1)) {
-  arrEventos[1]=0;
-  arrEventos[2]=1;
-  obstaculo.recoger (player);
-} else if ((player.metros>= 750)&&(arrEventos[2]==1)) {
-  arrEventos[2]=0;
-  arrEventos[3]=1;
-  obstaculo.sortear (player, playerOtro);
-} else if 
-}
-
-
