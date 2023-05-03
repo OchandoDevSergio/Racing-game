@@ -102,10 +102,38 @@ const checkWinner = (player) => {
   //comprobarmos si carCheck sus metros recorr son superiores o iguales a 2000... 
   if (player.metros >= 2000) {
     ganador = player.name;
-    Pageselector(4)
+    Pageselector(4);
   }
 
-}
+};
+
+const sobornarCheck = (combinacion, combinacionGanadora) => {
+
+  if(combinacion === combinacionGanadora){
+    clearTimeout(contador);
+  }
+};
+
+const boostCheck = (combinacion, combinacionGanadora) => {
+
+  if(combinacion === combinacionGanadora){
+    player.velocidad += 25;
+    //introducir texto player ha repostado ganando 25 de velocidad
+    clearTimeout(contador);
+  }
+};
+
+const hpCheck = (player, playerOtro) => {
+  if (player.hp <=0) {
+    ganador= playerOtro.name;
+          //poner que player ha sido descalificado
+    setTimeout(()=>{
+
+      Pageselector(4);
+
+    },3000);
+  }
+};
 
 const race = () => {
   let randomicer = Math.random() * 10;
@@ -113,11 +141,11 @@ const race = () => {
   if (randomicer <= 5) {
     // console.log("entra1");
     player1.acelerar(player1);
-    checkWinner(player1)
+    checkWinner(player1);
   } else if (randomicer > 5) {
     // console.log("entra2");
     player2.acelerar(player2);
-    checkWinner(player2)
+    checkWinner(player2);
   }
 
   
