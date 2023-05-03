@@ -1,51 +1,10 @@
-
-// let player1Combo = "";
-
-// document.addEventListener("keypress", (event) => {
-//   // if(event.key == "y"){
-//   //   console.log("mazo troncoooooooooooo");
-//   // }
-
-//   player1Combo += event.key
-
-//   const contador = setTimeout(()=>{
-
-//     return console.log("perrrrrrrrrrrerete");
-  
-//   },5000);
-  
-
-//   makeCombo(player1Combo, "asd");
-  
-// });
-
-// const makeCombo = (combinacion, combinacionGanadora) => {
-
-//   //compruebas aqui el input del user........ concatenando....
-
-
-
-
-//     //si no has logrado escribir el input..... 
-//     //hacemos un return en el settimeout 
-  
-    
-
-//   if(combinacion === combinacionGanadora){
-//     clearTimeout(contador);
-//     return console.log("lo has hecho bien amic");
-//   }
-
-// }
-
-
-
 //Variables de juego
 
 let ganador = "";
 let player1;
 let player2;
 let selectionscript = document.getElementById("playerselectionscript");
+let arrEventos = [1, 0, 0, 0, 0, 0, 0, 0];
 
 const Pageselector = (numpage) => {//función para mostrar una página concreta y ocultar el resto estando todas en el mismo .html
     let arrPages = ["page1", "page2", "page3", "page4"];
@@ -176,4 +135,22 @@ const buildRacingView = () => {
 document.getElementById("carpicplayer1").classList.add(player1.ref);
 document.getElementById("carpicplayer2").classList.add(player2.ref);
 }
+
+//CIRCUITO
+const checkEvents = (player, playerOtro) => {
+if ((player.metros>= 250)&&(arrEventos[0]==1)) {
+  arrEventos[0]=0;
+  arrEventos[1]=1;
+  obstaculo.sortear (player, playerOtro);
+} else if ((player.metros>= 500)&&(arrEventos[1]==1)) {
+  arrEventos[1]=0;
+  arrEventos[2]=1;
+  obstaculo.recoger (player);
+} else if ((player.metros>= 750)&&(arrEventos[2]==1)) {
+  arrEventos[2]=0;
+  arrEventos[3]=1;
+  obstaculo.sortear (player, playerOtro);
+} else if 
+}
+
 
