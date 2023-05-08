@@ -100,11 +100,17 @@ body {
 .playerselection {
     height: 10vh;
     width: 20vw;
+
+    font-family:cursive;
     color:black;
 
+    border: 0.1em solid black;
+    border-radius: 5% 5% 5% 5%;
+    background-color: darkkhaki;
+
     display: flex;
-    justify-content:flex-start;
-    align-items:flex-start;
+    justify-content:center;
+    align-items:center;
 }
 
 .cartext {

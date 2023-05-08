@@ -28,14 +28,14 @@ const selectCar = (car) => {
     player1 = car;
     document.getElementById(player1.ref).onclick = null;
     document.getElementById(player1.ref).classList.add("grey");
-    selectionscript.innerHTML = `Player1=${player1.name}`
+    selectionscript.innerHTML = `Player1 ha seleccionado ${player1.name}`
     return;
   }
 
   player2 = car;
   document.getElementById(player2.ref).onclick = null;
   document.getElementById(player2.ref).classList.add("grey");
-  selectionscript.innerHTML += `Player2=${player2.name}`
+  selectionscript.innerHTML += `<br> Player2 ha seleccionado ${player2.name}`
   document.getElementById("car1").onclick = null;
   document.getElementById("car2").onclick = null;
   document.getElementById("car3").onclick = null;
