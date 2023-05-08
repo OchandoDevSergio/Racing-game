@@ -98,12 +98,19 @@ const hpCheck = (player, playerOtro) => {
 const randomEvent = (player, playerOtro) =>{
   let randomNum = Math.random() * 10;
   if (randomNum > 9) {
+    console.log("garrot perrero")
     controlPolicial.sobornar(player, playerOtro);
   } else if ((randomNum<9)&&(randomNum>7)) {
+    console.log("garrot bo")
+
     combustibleEspecial.boost(player);
   } else if ((randomNum<7)&&(randomNum>4)) {
+    console.log("garrot roin")
+
     autoestopista.recoger(player);
   } else if (randomNum<4) {
+    console.log("garrot bootstrap")
+
     obstaculo.sortear(player, playerOtro);
   }
 }

@@ -25,12 +25,15 @@ class Event {
           
           },5000);
           sobornarCheck(playerScript, "soborno");
+
+          console.log("soborno loquisimo")
     });
 
     };
 
     recoger(player){
     player.hp += 100;
+    console.log("genoves roin")
 
     };
 
@@ -39,6 +42,7 @@ class Event {
     if (player.maniobrabilidad < dificulty) {
         player.hp -= parseInt(Math.random() * 100);
         hpCheck(player, playerOtro);
+        console.log("no lo ha sorteado")
     } else {
         //poner texto de player tal ha sorteado el obstáculo.
     }
@@ -54,6 +58,8 @@ class Event {
               },5000);
               boostCheck(playerScript, "gas");
         });
+
+        console.log("no hemos puesto nada")
 
     };
 
