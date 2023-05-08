@@ -2,20 +2,21 @@
 class Event {
 
     //Propiedades de los eventos
-    constructor(titulo, texto, distancia) {
+    constructor(titulo, texto) {
         this.titulo = titulo;
         this.texto = texto;
-        this.distancia = distancia;
     }
 
     //Métodos de los eventos
 
     sobornar(player, playerOtro){
     let playerScript = "";
+    eventstate.innerHTML = `La policía ha parado a ${player.name} <br> ${controlPolicial.texto}`
     document.addEventListener("keypress", (event) => {
         playerScript += event.key;
         const contador = setTimeout(()=>{
           ganador = playerOtro.name;
+          eventstate.innerHTML = `${player.name} ha sido detenido por la policía y descalificado.`
          //poner que player ha sido detenido por la policía y descalificado
          setTimeout(()=>{
 
@@ -24,16 +25,17 @@ class Event {
           },3000);
           
           },5000);
-          sobornarCheck(playerScript, "soborno");
+          sobornarCheck(playerScript, "soborno", player, contador);
 
-          console.log("soborno loquisimo")
+          console.log("soborno")
     });
 
     };
 
     recoger(player){
+    eventstate.innerHTML = `${player.name} ha recogido a un autoestopista y ha ganado 100 HP`
     player.hp += 100;
-    console.log("genoves roin")
+    console.log("autoestopista recogido")
 
     };
 
@@ -42,31 +44,33 @@ class Event {
     if (player.maniobrabilidad < dificulty) {
         player.hp -= parseInt(Math.random() * 100);
         hpCheck(player, playerOtro);
-        console.log("no lo ha sorteado")
+        eventstate.innerHTML = `${player.name} ha colisionado contra un obstáculo y perdido HP.`;
+        console.log("no lo ha sorteado");
     } else {
-        //poner texto de player tal ha sorteado el obstáculo.
+        eventstate.innerHTML = `${player.name} ha sorteado un obstáculo.`;
     }
 
     };
 
     boost(player){
         let playerScript = "";
+        eventstate.innerHTML = `${player.name} ha encontrado un bidón de combustible especial<br> ${combustibleEspecial.texto}`
         document.addEventListener("keypress", (event) => {
             playerScript += event.key;
             const contador = setTimeout(()=>{
-             //poner que player no ha podido repostar
+              eventstate.innerHTML = `${player.name} no ha podido repostar.`
               },5000);
-              boostCheck(playerScript, "gas");
+              boostCheck(playerScript, "gas", player, contador);
         });
 
-        console.log("no hemos puesto nada")
+        console.log("gasolina")
 
     };
 
 
 };
 
-let controlPolicial = new Event("Control Policial", "Soborna a los agentes escribiendo soborno", 0);
-let autoestopista = new Event("Autoestopista", "Recoge al autoestopista y recupera vida", 0);
-let obstaculo = new Event("Obstáculo", "Sortea el obstáculo en función de tu maniobrabilidad", 0);
-let combustibleEspecial = new Event("Combustible especial", "Reposta escribiendo ...", 0);
+let controlPolicial = new Event("Control Policial", "Soborna a los agentes escribiendo soborno");
+let autoestopista = new Event("Autoestopista", "Recoge al autoestopista y recupera vida");
+let obstaculo = new Event("Obstáculo", "Sortea el obstáculo en función de tu maniobrabilidad");
+let combustibleEspecial = new Event("Combustible especial", "Reposta escribiendo gas");

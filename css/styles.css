@@ -97,10 +97,7 @@ body {
     background-position: center center;
 }
 
-.playerselection {
-    height: 10vh;
-    width: 20vw;
-
+.info {
     font-family:cursive;
     color:black;
 
@@ -111,6 +108,17 @@ body {
     display: flex;
     justify-content:center;
     align-items:center;
+}
+
+#playerselectionscript {
+    height: 10vh;
+    width: 20vw;
+}
+
+#eventstate {
+    height: 20vh;
+    width: 40vw;
+
 }
 
 .cartext {
@@ -151,11 +159,6 @@ body {
     justify-content:flex-start;
     align-items:flex-start;
     flex-direction: row;
-}
-
-#page3space1 {
-    height: 20vh;
-    width: 40vw;
 }
 
 #page3row2 {

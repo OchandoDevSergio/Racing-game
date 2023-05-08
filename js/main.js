@@ -1,5 +1,5 @@
 //Variables de juego
-
+// eventstate.innerHTML = `Player1 ha seleccionado ${player1.name}`
 let ganador = "";
 let player1;
 let player2;
@@ -67,18 +67,19 @@ const checkWinner = (player) => {
 
 };
 
-const sobornarCheck = (combinacion, combinacionGanadora) => {
+const sobornarCheck = (combinacion, combinacionGanadora, player, contador) => {
 
   if(combinacion === combinacionGanadora){
     clearTimeout(contador);
+    eventstate.innerHTML = `${player.name} se ha librado de una detención.`
   }
 };
 
-const boostCheck = (combinacion, combinacionGanadora) => {
+const boostCheck = (combinacion, combinacionGanadora, player, contador) => {
 
   if(combinacion === combinacionGanadora){
     player.velocidad += 25;
-    //introducir texto player ha repostado ganando 25 de velocidad
+    eventstate.innerHTML = `${player.name} ha repostado ganando velocidad.`
     clearTimeout(contador);
   }
 };
@@ -86,7 +87,7 @@ const boostCheck = (combinacion, combinacionGanadora) => {
 const hpCheck = (player, playerOtro) => {
   if (player.hp <=0) {
     ganador= playerOtro.name;
-          //poner que player ha sido descalificado
+    `${player.name} se ha averiado y pierde.`
     setTimeout(()=>{
 
       Pageselector(4);
@@ -98,18 +99,18 @@ const hpCheck = (player, playerOtro) => {
 const randomEvent = (player, playerOtro) =>{
   let randomNum = Math.random() * 10;
   if (randomNum > 9) {
-    console.log("garrot perrero")
+    console.log("control policial")
     controlPolicial.sobornar(player, playerOtro);
   } else if ((randomNum<9)&&(randomNum>7)) {
-    console.log("garrot bo")
+    console.log("combustible especial")
 
     combustibleEspecial.boost(player);
   } else if ((randomNum<7)&&(randomNum>4)) {
-    console.log("garrot roin")
+    console.log("autoestopista")
 
     autoestopista.recoger(player);
   } else if (randomNum<4) {
-    console.log("garrot bootstrap")
+    console.log("obstáculo")
 
     obstaculo.sortear(player, playerOtro);
   }
@@ -147,7 +148,7 @@ const buildRacingView = () => {
 //en el documento js después de haber introducido todo lo que necesitará
   page3.innerHTML = `<div class="centrar">            <div id="page3row1">
   <div class="carpic" id="carpicplayer1"></div>
-  <div id="page3space1"></div>
+  <div class="info" id="eventstate"></div>
   <div class="carpic" id="carpicplayer2"></div>
 </div>
 <div id="page3row2">
