@@ -7,6 +7,8 @@ let selectionscript = document.getElementById("playerselectionscript");
 let distanciaEvento = 250;
 // let arrEventos = [1, 0, 0, 0, 0, 0, 0, 0];
 
+// document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
+// document.getElementById("steeringwheel").removeEventListener("click");
 const Pageselector = (numpage) => {//función para mostrar una página concreta y ocultar el resto estando todas en el mismo .html
     let arrPages = ["page1", "page2", "page3", "page4"];
     let goingPage = "page" + numpage;
@@ -16,6 +18,23 @@ const Pageselector = (numpage) => {//función para mostrar una página concreta 
     for (let i = 0; i < arrPages.length; i++) {
         document.getElementById(arrPages[i]).style.display = "none";
       }
+
+}
+
+const race = () => {
+  let randomicer = Math.random() * 10;
+  // console.log("randomicer", randomicer);
+  if (randomicer <= 5) {
+    // console.log("entra1");
+    player1.acelerar(player1);
+    checkEvents(player1, player2);
+    checkWinner(player1);
+  } else if (randomicer > 5) {
+    // console.log("entra2");
+    player2.acelerar(player2);
+    checkEvents(player2, player1);
+    checkWinner(player2);
+  }
 
 }
 
@@ -55,33 +74,66 @@ const selectCar = (car) => {
 
 }
 
-
-
 const checkWinner = (player) => {
 
-  //comprobarmos si carCheck sus metros recorr son superiores o iguales a 2000... 
+  //comprobarmos si carCheck sus metros recorridos son superiores o iguales a 2000... 
   if (player.metros >= 2000) {
     ganador = player.name;
     Pageselector(4);
   }
-
 };
 
-const sobornarCheck = (combinacion, combinacionGanadora, player, contador) => {
+const sobornarCheck = (player, playerOtro) => {
+  let playerScript = "";
+  console.log("soborno")
+  const contadorpolicia = setTimeout(()=>{
+    ganador = playerOtro.name;
+    eventstate.innerHTML = `${player.name} ha sido detenido por la policía y descalificado.`
+   setTimeout(()=>{
+      // document.getElementById("steeringwheel").onclick = race();//aunque ya no sería necesario
+      document.getElementById("page3space2").classList.remove("policia");//aunque ya no haría falta
+      Pageselector(4);
 
-  if(combinacion === combinacionGanadora){
-    clearTimeout(contador);
-    eventstate.innerHTML = `${player.name} se ha librado de una detención.`
-  }
+    },3000);
+    
+    },5000);
+  document.addEventListener("keypress", (event) => {
+    playerScript += event.key;
+    if(playerScript === "soborno"){
+      clearTimeout(contadorpolicia);
+      eventstate.innerHTML = `${player.name} se ha librado de una detención.`
+      setTimeout(()=>{
+        // document.getElementById("steeringwheel").onclick = race();
+        document.getElementById("page3space2").classList.remove("policia");
+        eventstate.innerHTML = `La carrera continua.`
+      },2000);
+    }
+});
 };
 
-const boostCheck = (combinacion, combinacionGanadora, player, contador) => {
-
-  if(combinacion === combinacionGanadora){
-    player.velocidad += 25;
-    eventstate.innerHTML = `${player.name} ha repostado ganando velocidad.`
-    clearTimeout(contador);
-  }
+const gas = (player) => {
+  let playerScript = "";
+  const contadorgas = setTimeout(()=>{
+    eventstate.innerHTML = `${player.name} no ha podido repostar.`
+    console.log("no se ha cortado el timeout");
+    setTimeout(()=>{
+      // document.getElementById("steeringwheel").onclick = race();
+      document.getElementById("page3space2").classList.remove("gas");
+    },2000);
+    },5000);
+  document.addEventListener("keypress", (event) => {
+    playerScript += event.key;
+      if(playerScript === "gas"){
+        player.velocidad += 25;
+        eventstate.innerHTML = `${player.name} ha repostado ganando velocidad.`
+        clearTimeout(contadorgas);
+        setTimeout(()=>{
+          // document.getElementById("steeringwheel").onclick = race();
+          document.getElementById("page3space2").classList.remove("gas");
+          eventstate.innerHTML = `La carrera continua.`
+        },2000);
+      }
+});
 };
 
 const hpCheck = (player, playerOtro) => {
@@ -89,7 +141,10 @@ const hpCheck = (player, playerOtro) => {
     ganador= playerOtro.name;
     `${player.name} se ha averiado y pierde.`
     setTimeout(()=>{
-
+      setTimeout(()=>{
+        // document.getElementById("steeringwheel").onclick = race();
+        document.getElementById("page3space2").classList.remove("obstaculo");//aunque ya no sería necesario
+      },2000);
       Pageselector(4);
 
     },3000);
@@ -99,19 +154,24 @@ const hpCheck = (player, playerOtro) => {
 const randomEvent = (player, playerOtro) =>{
   let randomNum = Math.random() * 10;
   if (randomNum > 9) {
+    // document.getElementById("steeringwheel").onclick = null;
     console.log("control policial")
+    document.getElementById("page3space2").classList.add("policia");
     controlPolicial.sobornar(player, playerOtro);
   } else if ((randomNum<9)&&(randomNum>7)) {
+    // document.getElementById("steeringwheel").onclick = null;
     console.log("combustible especial")
-
+    document.getElementById("page3space2").classList.add("gas");
     combustibleEspecial.boost(player);
   } else if ((randomNum<7)&&(randomNum>4)) {
+    // document.getElementById("steeringwheel").onclick = null;
     console.log("autoestopista")
-
+    document.getElementById("page3space2").classList.add("autoestopista");
     autoestopista.recoger(player);
   } else if (randomNum<4) {
+    // document.getElementById("steeringwheel").onclick = null;
     console.log("obstáculo")
-
+    document.getElementById("page3space2").classList.add("obstaculo");
     obstaculo.sortear(player, playerOtro);
   }
 }
@@ -123,23 +183,7 @@ if (player.metros >= distanciaEvento) {
 }
 }
 
-const race = () => {
-  let randomicer = Math.random() * 10;
-  // console.log("randomicer", randomicer);
-  if (randomicer <= 5) {
-    // console.log("entra1");
-    player1.acelerar(player1);
-    checkEvents(player1, player2);
-    checkWinner(player1);
-  } else if (randomicer > 5) {
-    // console.log("entra2");
-    player2.acelerar(player2);
-    checkEvents(player2, player1);
-    checkWinner(player2);
-  }
 
-  
-}
 
 const buildRacingView = () => {
 
@@ -161,8 +205,9 @@ const buildRacingView = () => {
    velocidad: ${player2.velocidad} <br>maniobrabilidad: ${player2.maniobrabilidad} <br></div>
 </div>
 <div id="page3row3">
-  <div id="steeringwheel" onclick="race()"></div>
+<div id="steeringwheel" onclick="race()"></div>
 </div></div>`;
 document.getElementById("carpicplayer1").classList.add(player1.ref);
 document.getElementById("carpicplayer2").classList.add(player2.ref);
 }
+
