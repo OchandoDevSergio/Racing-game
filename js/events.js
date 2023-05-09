@@ -19,6 +19,7 @@ class Event {
     recoger(player){
     eventstate.innerHTML = `${player.name} ha recogido a un autoestopista y ha ganado 100 HP`
     player.hp += 100;
+    actualizador();
     setTimeout(()=>{
         // document.getElementById("steeringwheel").onclick = race();
         document.getElementById("page3space2").classList.remove("autoestopista");
@@ -31,6 +32,7 @@ class Event {
     let dificulty = Math.random() * 50;
     if (player.maniobrabilidad < dificulty) {
         player.hp -= parseInt(Math.random() * 100);
+        actualizador();
         hpCheck(player, playerOtro);
         eventstate.innerHTML = `${player.name} ha colisionado contra un obstáculo y perdido HP.`;
         setTimeout(()=>{

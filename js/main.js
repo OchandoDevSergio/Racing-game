@@ -125,6 +125,7 @@ const gas = (player) => {
     playerScript += event.key;
       if(playerScript === "gas"){
         player.velocidad += 25;
+        actualizador();
         eventstate.innerHTML = `${player.name} ha repostado ganando velocidad.`
         clearTimeout(contadorgas);
         setTimeout(()=>{
@@ -183,6 +184,15 @@ if (player.metros >= distanciaEvento) {
 }
 }
 
+const actualizador = () => {
+  document.getElementById("cardescription2").innerHTML= `Nombre: ${player2.name} <br>
+  HP: ${player2.hp} Velocidad: ${player2.velocidad} Maniobrabilidad: ${player2.maniobrabilidad}<br>
+  Metros recorridos: ${player2.metros} <br>`;
+  document.getElementById("cardescription1").innerHTML= `Nombre: ${player1.name} <br>
+  HP: ${player1.hp} Velocidad: ${player1.velocidad} Maniobrabilidad: ${player1.maniobrabilidad}<br>
+  Metros recorridos: ${player1.metros} <br>`;
+  }
+
 
 
 const buildRacingView = () => {
@@ -196,13 +206,15 @@ const buildRacingView = () => {
   <div class="carpic" id="carpicplayer2"></div>
 </div>
 <div id="page3row2">
-  <div class="cardescription" id="cardescription1">color: ${player1.color} <br>
-  estampado: ${player1.estampado} <br> metros recorridos: ${player1.metros} <br>
-   velocidad: ${player1.velocidad} <br>maniobrabilidad: ${player1.maniobrabilidad} <br></div>
+  <div class="carspace">
+  <div class="cardescription" id="cardescription1">Nombre: ${player1.name} <br>
+  HP: ${player1.hp} Velocidad: ${player1.velocidad} Maniobrabilidad: ${player1.maniobrabilidad}<br>
+  Metros recorridos: ${player1.metros} <br></div></div>
   <div id="page3space2"></div>
-  <div class="cardescription" id="cardescription2">color: ${player2.color} <br>
-  estampado: ${player2.estampado} <br> metros recorridos: ${player2.metros} <br>
-   velocidad: ${player2.velocidad} <br>maniobrabilidad: ${player2.maniobrabilidad} <br></div>
+  <div class="carspace">
+  <div class="cardescription" id="cardescription2">Nombre: ${player2.name} <br>
+  HP: ${player2.hp} Velocidad: ${player2.velocidad} Maniobrabilidad: ${player2.maniobrabilidad}<br>
+  Metros recorridos: ${player2.metros} <br></div></div>
 </div>
 <div id="page3row3">
 <div id="steeringwheel" onclick="race()"></div>

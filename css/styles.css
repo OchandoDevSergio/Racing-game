@@ -96,10 +96,20 @@ body {
     background-repeat:no-repeat;
     background-position: center center;
 
+}
+
+#carpicplayer1 {
     margin-bottom: 0.2%;
     margin-top: 0.2%;
     margin-left: 0.2%;
-    margin-right: 0.2%;
+    margin-right: 0.2%;  
+}
+
+#carpicplayer2 {
+    margin-bottom: 0.2%;
+    margin-top: 0.2%;
+    margin-left: 0.2%;
+    margin-right: 0.2%;  
 }
 
 .info {
@@ -183,12 +193,29 @@ body {
     flex-direction: row;
 }
 
+.carspace {
+    height: 47vh;
+    width: 30vw;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction: column;
+}
+
 .cardescription {
     color:black;
     border: 0.1em solid black;
+    font-family:cursive;
 
-    height: 49vh;
-    width: 30vw;
+    height: 10vh;
+    width: 28vw;
+
+    background-color: darkkhaki;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     margin-bottom: 0.2%;
     margin-top: 0.2%;
