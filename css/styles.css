@@ -95,6 +95,11 @@ body {
     background-size:100% 100%;
     background-repeat:no-repeat;
     background-position: center center;
+
+    margin-bottom: 0.2%;
+    margin-top: 0.2%;
+    margin-left: 0.2%;
+    margin-right: 0.2%;
 }
 
 .info {
@@ -102,7 +107,7 @@ body {
     color:black;
 
     border: 0.1em solid black;
-    border-radius: 5% 5% 5% 5%;
+
     background-color: darkkhaki;
 
     display: flex;
@@ -113,12 +118,19 @@ body {
 #playerselectionscript {
     height: 10vh;
     width: 20vw;
+    border-radius: 5% 5% 5% 5%;
 }
 
 #eventstate {
     height: 20vh;
     width: 40vw;
 
+    border-radius: 3% 3% 3% 3%;
+
+    margin-bottom: 0.2%;
+    margin-top: 0.2%;
+    margin-left: 0.2%;
+    margin-right: 0.2%;
 }
 
 .cartext {
@@ -177,11 +189,25 @@ body {
 
     height: 49vh;
     width: 30vw;
+
+    margin-bottom: 0.2%;
+    margin-top: 0.2%;
+    margin-left: 0.2%;
+    margin-right: 0.2%;
 }
 
 #page3space2 {
     height: 49vh;
     width: 40vw;
+
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position: center center;
+
+    margin-bottom: 0.2%;
+    margin-top: 0.2%;
+    margin-left: 0.2%;
+    margin-right: 0.2%;
 }
 
 #page3row3 {
@@ -206,4 +232,28 @@ body {
 .grey {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
+}
+
+.autoestopista {
+    background-image: url("../img/autoestopista.jpg");
+    border: 0.1em solid black;
+    border-radius: 5% 5% 5% 5%;
+}
+
+.policia {
+    background-image: url("../img/controlpolicial.webp");
+    border: 0.1em solid black;
+    border-radius: 5% 5% 5% 5%;
+}
+
+.gas {
+    background-image: url("../img/gas.jpg");
+    border: 0.1em solid black;
+    border-radius: 5% 5% 5% 5%;
+}
+
+.obstaculo {
+    background-image: url("../img/obstaculo.jpg");
+    border: 0.1em solid black;
+    border-radius: 5% 5% 5% 5%;
 }
