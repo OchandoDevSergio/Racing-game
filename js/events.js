@@ -21,8 +21,10 @@ class Event {
     player.hp += 100;
     actualizador();
     setTimeout(()=>{
+        // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
         // document.getElementById("steeringwheel").onclick = race();
         document.getElementById("page3space2").classList.remove("autoestopista");
+        eventstate.innerHTML = `La carrera continua.`
       },2000);
     console.log("autoestopista recogido")
 
@@ -36,15 +38,19 @@ class Event {
         hpCheck(player, playerOtro);
         eventstate.innerHTML = `${player.name} ha colisionado contra un obstáculo y perdido HP.`;
         setTimeout(()=>{
+            // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
             // document.getElementById("steeringwheel").onclick = race();
             document.getElementById("page3space2").classList.remove("obstaculo");
+            eventstate.innerHTML = `La carrera continua.`
           },2000);
         console.log("no lo ha sorteado");
     } else {
         eventstate.innerHTML = `${player.name} ha sorteado un obstáculo.`;
         setTimeout(()=>{
+            // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
             // document.getElementById("steeringwheel").onclick = race();
             document.getElementById("page3space2").classList.remove("obstaculo");
+            eventstate.innerHTML = `La carrera continua.`
           },2000);
     }
 

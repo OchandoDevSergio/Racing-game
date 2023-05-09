@@ -5,6 +5,7 @@ let player1;
 let player2;
 let selectionscript = document.getElementById("playerselectionscript");
 let distanciaEvento = 250;
+// eventstate.innerHTML = `¡Comienza la carrera!<br> Haz click en el volante para acelerar.`
 // let arrEventos = [1, 0, 0, 0, 0, 0, 0, 0];
 
 // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
@@ -90,6 +91,7 @@ const sobornarCheck = (player, playerOtro) => {
     ganador = playerOtro.name;
     eventstate.innerHTML = `${player.name} ha sido detenido por la policía y descalificado.`
    setTimeout(()=>{
+      // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
       // document.getElementById("steeringwheel").onclick = race();//aunque ya no sería necesario
       document.getElementById("page3space2").classList.remove("policia");//aunque ya no haría falta
       Pageselector(4);
@@ -103,6 +105,7 @@ const sobornarCheck = (player, playerOtro) => {
       clearTimeout(contadorpolicia);
       eventstate.innerHTML = `${player.name} se ha librado de una detención.`
       setTimeout(()=>{
+        // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
         // document.getElementById("steeringwheel").onclick = race();
         document.getElementById("page3space2").classList.remove("policia");
         eventstate.innerHTML = `La carrera continua.`
@@ -117,8 +120,10 @@ const gas = (player) => {
     eventstate.innerHTML = `${player.name} no ha podido repostar.`
     console.log("no se ha cortado el timeout");
     setTimeout(()=>{
+      // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
       // document.getElementById("steeringwheel").onclick = race();
       document.getElementById("page3space2").classList.remove("gas");
+      eventstate.innerHTML = `La carrera continua.`
     },2000);
     },5000);
   document.addEventListener("keypress", (event) => {
@@ -129,6 +134,7 @@ const gas = (player) => {
         eventstate.innerHTML = `${player.name} ha repostado ganando velocidad.`
         clearTimeout(contadorgas);
         setTimeout(()=>{
+          // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
           // document.getElementById("steeringwheel").onclick = race();
           document.getElementById("page3space2").classList.remove("gas");
           eventstate.innerHTML = `La carrera continua.`
@@ -143,6 +149,7 @@ const hpCheck = (player, playerOtro) => {
     `${player.name} se ha averiado y pierde.`
     setTimeout(()=>{
       setTimeout(()=>{
+        // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
         // document.getElementById("steeringwheel").onclick = race();
         document.getElementById("page3space2").classList.remove("obstaculo");//aunque ya no sería necesario
       },2000);
@@ -155,21 +162,25 @@ const hpCheck = (player, playerOtro) => {
 const randomEvent = (player, playerOtro) =>{
   let randomNum = Math.random() * 10;
   if (randomNum > 9) {
+    // document.getElementById("steeringwheel").removeEventListener("click", (e));
     // document.getElementById("steeringwheel").onclick = null;
     console.log("control policial")
     document.getElementById("page3space2").classList.add("policia");
     controlPolicial.sobornar(player, playerOtro);
   } else if ((randomNum<9)&&(randomNum>7)) {
+    // document.getElementById("steeringwheel").removeEventListener("click", (e));
     // document.getElementById("steeringwheel").onclick = null;
     console.log("combustible especial")
     document.getElementById("page3space2").classList.add("gas");
     combustibleEspecial.boost(player);
   } else if ((randomNum<7)&&(randomNum>4)) {
+    // document.getElementById("steeringwheel").removeEventListener("click", (e));
     // document.getElementById("steeringwheel").onclick = null;
     console.log("autoestopista")
     document.getElementById("page3space2").classList.add("autoestopista");
     autoestopista.recoger(player);
   } else if (randomNum<4) {
+    // document.getElementById("steeringwheel").removeEventListener("click", ());
     // document.getElementById("steeringwheel").onclick = null;
     console.log("obstáculo")
     document.getElementById("page3space2").classList.add("obstaculo");
@@ -219,7 +230,10 @@ const buildRacingView = () => {
 <div id="page3row3">
 <div id="steeringwheel" onclick="race()"></div>
 </div></div>`;
+eventstate.innerHTML = `¡Comienza la carrera!<br> Haz click en el volante para acelerar.`
 document.getElementById("carpicplayer1").classList.add(player1.ref);
 document.getElementById("carpicplayer2").classList.add(player2.ref);
+// document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
+//<div id="steeringwheel" onclick="race()"></div>
 }
 
