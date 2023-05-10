@@ -84,6 +84,15 @@ const checkWinner = (player) => {
   }
 };
 
+const backToRace = (classtoremove) => {
+  setTimeout(()=>{
+    // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
+    // document.getElementById("steeringwheel").onclick = race();
+    document.getElementById("page3space2").classList.remove(classtoremove);
+    eventstate.innerHTML = `La carrera continua.`
+  },2000);
+}
+
 const sobornarCheck = (player, playerOtro) => {
   let playerScript = "";
   console.log("soborno")
@@ -104,12 +113,7 @@ const sobornarCheck = (player, playerOtro) => {
     if(playerScript === "soborno"){
       clearTimeout(contadorpolicia);
       eventstate.innerHTML = `${player.name} se ha librado de una detención.`
-      setTimeout(()=>{
-        // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
-        // document.getElementById("steeringwheel").onclick = race();
-        document.getElementById("page3space2").classList.remove("policia");
-        eventstate.innerHTML = `La carrera continua.`
-      },2000);
+      backToRace("policia");
     }
 });
 };
@@ -119,12 +123,7 @@ const gas = (player) => {
   const contadorgas = setTimeout(()=>{
     eventstate.innerHTML = `${player.name} no ha podido repostar.`
     console.log("no se ha cortado el timeout");
-    setTimeout(()=>{
-      // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
-      // document.getElementById("steeringwheel").onclick = race();
-      document.getElementById("page3space2").classList.remove("gas");
-      eventstate.innerHTML = `La carrera continua.`
-    },2000);
+    backToRace("gas");
     },5000);
   document.addEventListener("keypress", (event) => {
     playerScript += event.key;
@@ -133,12 +132,7 @@ const gas = (player) => {
         actualizador();
         eventstate.innerHTML = `${player.name} ha repostado ganando velocidad.`
         clearTimeout(contadorgas);
-        setTimeout(()=>{
-          // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
-          // document.getElementById("steeringwheel").onclick = race();
-          document.getElementById("page3space2").classList.remove("gas");
-          eventstate.innerHTML = `La carrera continua.`
-        },2000);
+        backToRace("gas");
       }
 });
 };
@@ -148,13 +142,8 @@ const hpCheck = (player, playerOtro) => {
     ganador= playerOtro.name;
     `${player.name} se ha averiado y pierde.`
     setTimeout(()=>{
-      setTimeout(()=>{
-        // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
-        // document.getElementById("steeringwheel").onclick = race();
-        document.getElementById("page3space2").classList.remove("obstaculo");//aunque ya no sería necesario
-      },2000);
+      backToRace("obstaculo");
       Pageselector(4);
-
     },3000);
   }
 };

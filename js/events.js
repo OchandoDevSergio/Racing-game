@@ -1,33 +1,26 @@
 
 class Event {
 
-    //Propiedades de los eventos
+    //PROPIEDADES DE LOS EVENTOS
+
     constructor(titulo, texto) {
         this.titulo = titulo;
         this.texto = texto;
     }
 
-    //Métodos de los eventos
+    //MÉTODOS DE LOS EVENTOS
 
     sobornar(player, playerOtro){
-
     sobornarCheck(player, playerOtro);
     eventstate.innerHTML = `La policía ha parado a ${player.name} <br> ${controlPolicial.texto}`
-
     };
 
     recoger(player){
     eventstate.innerHTML = `${player.name} ha recogido a un autoestopista y ha ganado 100 HP`
     player.hp += 100;
     actualizador();
-    setTimeout(()=>{
-        // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
-        // document.getElementById("steeringwheel").onclick = race();
-        document.getElementById("page3space2").classList.remove("autoestopista");
-        eventstate.innerHTML = `La carrera continua.`
-      },2000);
+    backToRace("autoestopista");
     console.log("autoestopista recogido")
-
     };
 
     sortear(player, playerOtro){
@@ -37,23 +30,12 @@ class Event {
         actualizador();
         hpCheck(player, playerOtro);
         eventstate.innerHTML = `${player.name} ha colisionado contra un obstáculo y perdido HP.`;
-        setTimeout(()=>{
-            // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
-            // document.getElementById("steeringwheel").onclick = race();
-            document.getElementById("page3space2").classList.remove("obstaculo");
-            eventstate.innerHTML = `La carrera continua.`
-          },2000);
+        backToRace("obstaculo");
         console.log("no lo ha sorteado");
     } else {
         eventstate.innerHTML = `${player.name} ha sorteado un obstáculo.`;
-        setTimeout(()=>{
-            // document.getElementById("steeringwheel").addEventListener("click", () =>{ race()});
-            // document.getElementById("steeringwheel").onclick = race();
-            document.getElementById("page3space2").classList.remove("obstaculo");
-            eventstate.innerHTML = `La carrera continua.`
-          },2000);
+        backToRace("obstaculo");
     }
-
     };
 
     boost(player){
@@ -62,9 +44,9 @@ class Event {
          console.log("gasolina")
     };
 
-
 };
-
+    //EVENTOS
+    
 let controlPolicial = new Event("Control Policial", "Soborna a los agentes escribiendo soborno");
 let autoestopista = new Event("Autoestopista", "Recoge al autoestopista y recupera vida");
 let obstaculo = new Event("Obstáculo", "Sortea el obstáculo en función de tu maniobrabilidad");
