@@ -20,7 +20,6 @@ class Event {
     player.hp += 100;
     actualizador();
     backToRace("autoestopista");
-    console.log("autoestopista recogido")
     };
 
     sortear(player, playerOtro){
@@ -31,7 +30,6 @@ class Event {
         hpCheck(player, playerOtro);
         eventstate.innerHTML = `${player.name} ha colisionado contra un obstáculo y perdido HP.`;
         backToRace("obstaculo");
-        console.log("no lo ha sorteado");
     } else {
         eventstate.innerHTML = `${player.name} ha sorteado un obstáculo.`;
         backToRace("obstaculo");
@@ -41,7 +39,6 @@ class Event {
     boost(player){
         gas(player);
         eventstate.innerHTML = `${player.name} ha encontrado un bidón de combustible especial<br> ${combustibleEspecial.texto}`
-         console.log("gasolina")
     };
 
 };
