@@ -42,7 +42,7 @@ JavaScript
    ![](https://i.ibb.co/L1bBKYH/page2.jpg)
 
   En la siguiente pantalla, que sería la pantalla principal del juego, nos encontramos con las imágenes asociadas a los personajes seleccionados en la pantalla anterior, un cartel que nos indica el estado de la carrera y por último una imagen de un volante en el margen inferior. Cuando clickamos ese volante se inician una serie de funciones que dan lugar a que aumenten los metros recorridos por uno de los dos jugadores seleccionado aleatoriamente. 
-  Cada 250 metros se inicia un evento que afecta al primero de los dos jugadores en haber alcanzado ese punto. Los eventos han sido introducidos también a través del empleo de clases de JavaScript y son situaciones que favorecen o perjudican la partida dle jugador.
+  Cada 250 metros se inicia un evento que afecta al primero de los dos jugadores en haber alcanzado ese punto. Los eventos han sido introducidos también a través del empleo de clases de JavaScript, siendo situaciones que favorecen o perjudican la partida dle jugador. Algunos de ellos no requieren interacción por parte del jugador, pero otros sin embargo le pedirán introducir un string por teclado para ser superados con éxito. 
   Finalmente un jugador es determiando ganador cuando alcanza los 2000 metros recorridos o el adversario es descalificado, dando paso a la última pantalla.
 
    ![](https://i.ibb.co/kG3PdNR/page3.jpg)
