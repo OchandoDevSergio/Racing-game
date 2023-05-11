@@ -19,23 +19,8 @@ const Pageselector = (numpage) => {
   }
 };
 
-const race = () => {
-  let randomicer = Math.random() * 10;
-  if (randomicer <= 5) {
-    player1.acelerar(player1);
-    checkEvents(player1, player2);
-    checkWinner(player1);
-  } else if (randomicer > 5) {
-    player2.acelerar(player2);
-    checkEvents(player2, player1);
-    checkWinner(player2);
-  }
-};
-
 const selectCar = (car) => {
-  //Dado que si player1 es undefined, se puede representar con una exclamación
-  //delante. Eso equivale a que no hemos escogido aun ningun elemento, por lo
-  //tanto, el primero va al player1
+  //función para la selección de personajes por parte de los jugadores
   if (!player1) {
     player1 = car;
     document.getElementById(player1.ref).onclick = null;
@@ -60,23 +45,52 @@ const selectCar = (car) => {
   }, 1500);
 };
 
-const checkWinner = (player) => {
-  //comprobarmos si los metros recorridos son superiores o iguales a 2000...
-  if (player.metros >= 2000) {
-    winnerscript.innerHTML = `${player.name} ha ganado la carrera ¡felicidades!`;
-    Pageselector(4);
+const race = () => {
+  //función para asignar de forma aleatoria quien acelera y tras ello comrpobar si hay un ganador
+  let randomicer = Math.random() * 10;
+  if (randomicer <= 5) {
+    player1.acelerar(player1);
+    checkEvents(player1, player2);
+    checkWinner(player1);
+  } else if (randomicer > 5) {
+    player2.acelerar(player2);
+    checkEvents(player2, player1);
+    checkWinner(player2);
   }
 };
 
-const backToRace = (classtoremove) => {
-  setTimeout(() => {
-    document.getElementById("steeringwheel").style.display = "flex";
-    document.getElementById("page3space2").classList.remove(classtoremove);
-    eventstate.innerHTML = `La carrera continua.`;
-  }, 2000);
+const checkEvents = (player, playerOtro) => {
+  //Función para introducir un evento cada 250m
+  if (player.metros >= distanciaEvento) {
+    distanciaEvento += 250;
+    randomEvent(player, playerOtro);
+  }
+};
+
+const randomEvent = (player, playerOtro) => {
+  //Función para seleccionar qué eventos se introducen de forma aleatoria
+  let randomNum = Math.random() * 10;
+  if (randomNum > 9) {
+    document.getElementById("steeringwheel").style.display = "none";
+    document.getElementById("page3space2").classList.add("policia");
+    controlPolicial.sobornar(player, playerOtro);
+  } else if (randomNum < 9 && randomNum > 7) {
+    document.getElementById("steeringwheel").style.display = "none";
+    document.getElementById("page3space2").classList.add("gas");
+    combustibleEspecial.boost(player);
+  } else if (randomNum < 7 && randomNum > 4) {
+    document.getElementById("steeringwheel").style.display = "none";
+    document.getElementById("page3space2").classList.add("autoestopista");
+    autoestopista.recoger(player);
+  } else if (randomNum < 4) {
+    document.getElementById("steeringwheel").style.display = "none";
+    document.getElementById("page3space2").classList.add("obstaculo");
+    obstaculo.sortear(player, playerOtro);
+  }
 };
 
 const sobornarCheck = (player, playerOtro) => {
+  //función auxiliar del evento controlPolicial
   let playerScript = "";
   const contadorpolicia = setTimeout(() => {
     winnerscript.innerHTML = `${playerOtro.name} ha ganado la carrera ¡felicidades!`;
@@ -98,6 +112,7 @@ const sobornarCheck = (player, playerOtro) => {
 };
 
 const gas = (player) => {
+  //función auxiliar del evento combustibleEspecial
   let playerScript = "";
   const contadorgas = setTimeout(() => {
     eventstate.innerHTML = `${player.name} no ha podido repostar.`;
@@ -115,7 +130,35 @@ const gas = (player) => {
   });
 };
 
+const actualizador = () => {
+  //función para acturalizar los stats de los personajes
+  document.getElementById("cardescription2").innerHTML = `Nombre: ${player2.name} <br>
+  HP: ${player2.hp} Velocidad: ${player2.velocidad} Maniobrabilidad: ${player2.maniobrabilidad}<br>
+  Metros recorridos: ${player2.metros} <br>`;
+  document.getElementById("cardescription1").innerHTML = `Nombre: ${player1.name} <br>
+  HP: ${player1.hp} Velocidad: ${player1.velocidad} Maniobrabilidad: ${player1.maniobrabilidad}<br>
+  Metros recorridos: ${player1.metros} <br>`;
+};
+
+const backToRace = (classtoremove) => {
+  //función para eliminar los cambios estéticos tras un evento
+  setTimeout(() => {
+    document.getElementById("steeringwheel").style.display = "flex";
+    document.getElementById("page3space2").classList.remove(classtoremove);
+    eventstate.innerHTML = `La carrera continua.`;
+  }, 2000);
+};
+
+const checkWinner = (player) => {
+  //comprobarmos si los metros recorridos son superiores o iguales a 2000...
+  if (player.metros >= 2000) {
+    winnerscript.innerHTML = `${player.name} ha ganado la carrera ¡felicidades!`;
+    Pageselector(4);
+  }
+};
+
 const hpCheck = (player, playerOtro) => {
+  //función para comprobar si algún jugador queda eiminado por perder todos los HP
   if (player.hp <= 0) {
     winnerscript.innerHTML = `${playerOtro.name} ha ganado la carrera ¡felicidades!`;
     `${player.name} se ha averiado y pierde.`;
@@ -124,43 +167,6 @@ const hpCheck = (player, playerOtro) => {
       Pageselector(4);
     }, 3000);
   }
-};
-
-const randomEvent = (player, playerOtro) => {
-  let randomNum = Math.random() * 10;
-  if (randomNum > 9) {
-    document.getElementById("steeringwheel").style.display = "none";
-    document.getElementById("page3space2").classList.add("policia");
-    controlPolicial.sobornar(player, playerOtro);
-  } else if (randomNum < 9 && randomNum > 7) {
-    document.getElementById("steeringwheel").style.display = "none";
-    document.getElementById("page3space2").classList.add("gas");
-    combustibleEspecial.boost(player);
-  } else if (randomNum < 7 && randomNum > 4) {
-    document.getElementById("steeringwheel").style.display = "none";
-    document.getElementById("page3space2").classList.add("autoestopista");
-    autoestopista.recoger(player);
-  } else if (randomNum < 4) {
-    document.getElementById("steeringwheel").style.display = "none";
-    document.getElementById("page3space2").classList.add("obstaculo");
-    obstaculo.sortear(player, playerOtro);
-  }
-};
-
-const checkEvents = (player, playerOtro) => {
-  if (player.metros >= distanciaEvento) {
-    distanciaEvento += 250;
-    randomEvent(player, playerOtro);
-  }
-};
-
-const actualizador = () => {
-  document.getElementById("cardescription2").innerHTML = `Nombre: ${player2.name} <br>
-  HP: ${player2.hp} Velocidad: ${player2.velocidad} Maniobrabilidad: ${player2.maniobrabilidad}<br>
-  Metros recorridos: ${player2.metros} <br>`;
-  document.getElementById("cardescription1").innerHTML = `Nombre: ${player1.name} <br>
-  HP: ${player1.hp} Velocidad: ${player1.velocidad} Maniobrabilidad: ${player1.maniobrabilidad}<br>
-  Metros recorridos: ${player1.metros} <br>`;
 };
 
 const buildRacingView = () => {

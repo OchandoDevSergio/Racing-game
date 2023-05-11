@@ -11,11 +11,13 @@ class Event {
     //MÉTODOS DE LOS EVENTOS
 
     sobornar(player, playerOtro){
+        //método para el evento controlPolicial
     sobornarCheck(player, playerOtro);
     eventstate.innerHTML = `La policía ha parado a ${player.name} <br> ${controlPolicial.texto}`
     };
 
     recoger(player){
+        //método para el evento autoestopista
     eventstate.innerHTML = `${player.name} ha recogido a un autoestopista y ha ganado 100 HP`
     player.hp += 100;
     actualizador();
@@ -23,6 +25,7 @@ class Event {
     };
 
     sortear(player, playerOtro){
+        //método para el evento obstaculo
     let dificulty = Math.random() * 50;
     if (player.maniobrabilidad < dificulty) {
         player.hp -= parseInt(Math.random() * 100);
@@ -37,6 +40,7 @@ class Event {
     };
 
     boost(player){
+        //método para el evento combstibleEspecial
         gas(player);
         eventstate.innerHTML = `${player.name} ha encontrado un bidón de combustible especial<br> ${combustibleEspecial.texto}`
     };

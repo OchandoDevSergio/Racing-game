@@ -14,6 +14,7 @@ class Car {
     //Métodos
 
     acelerar(player){
+        //método auxiliar d ela función race()
         player.metros = this.metros + this.velocidad + (parseInt(Math.random() * 10));
         actualizador();
     };
