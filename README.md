@@ -34,7 +34,7 @@ JavaScript
   Al inciar el juego nos encontramos con la primera pantalla, la pantalla de incio del juego en la que simplemente tenemos un fondo y un botón que al clickar nos conduciría a la siguiente pantalla. 
   La técnica empleada para que estando todas las pantallas en una misma página .html sólo se muestre la pantalla pertinente, consiste en la introducción de 4 divs (page1-page4) en el mismo .html a los que una función (a la que hemos llamado Pageselector()) se encargará de asignar display = block, si es la pantalla que queremos mostrar o display = none de lo contrario.
   
-  ![](https://i.ibb.co/RQnJpjz/page1.jpg)
+  ![](https://i.ibb.co/5sDJWKB/page1.jpg)
 
   En la siguiente pantalla encontramos un cuadro de selección de los personajes en el que nos aparece una breve descripción y una imagen de los mismos. Clickando sobre las imágenes se activa una función que los asigna a los jugadores, dando paso al cambio a la siguiente página, unos instantes tras haber completado la selección.
   Los personajes que aparecen han sido introducidos en el juego como clases de JavaScript.
